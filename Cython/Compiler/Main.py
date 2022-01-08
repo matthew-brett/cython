@@ -584,7 +584,7 @@ def compile_multiple(sources, options):
     a CompilationResultSet. Performs timestamp checking and/or recursion
     if these are specified in the options.
     """
-    if len(sources) > 1 and options.full_module_name:
+    if len(sources) > 1 and options.module_name:
         raise RuntimeError('Full module name can only be set '
                            'for single source compilation')
     # run_pipeline creates the context
@@ -722,6 +722,7 @@ def main(command_line = 0):
     any_failures = 0
     if command_line:
         options, sources = parse_command_line(args)
+        print(options, sources)
     else:
         options = CompilationOptions(default_options)
         sources = args
